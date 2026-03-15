@@ -64,7 +64,7 @@ router.put("/markAsCompleted/:_id", async(req, res) => {
 
     router.put("/id/:_id", async(req, res) => {
         try {
-            const task = await Task.findByIdAndUpdate(req.params._id, req.body, { new: true })
+            const task = await Task.findByIdAndUpdate(req.params._id, { title: req.body.title }, { new: true })
             res.send({ message: "task successfully updated", task });
         } catch (error) {
             console.error(error);
